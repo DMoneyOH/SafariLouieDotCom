@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="color-scheme" content="light dark" />
+<meta name="color-scheme" content="dark" />
 <meta name="description" content="Safari Louie — Louie Eigensee's photo tours of zoos and aquariums, in his photos and his words, from his Facebook page." />
 <link rel="icon" href="data:," />
 <title>Safari Louie — Photo Tours</title>
@@ -12,12 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --paper:#fdfaf0; --bg:#ece4c8; --ink:#2a2318; --ink-soft:#5f5540;
-    --line:#ddd2ae; --forest:#1f3d26; --forest-deep:#152a1a;
-    --rust:#b94a14; --gold:#c9970d; --tape:rgba(232,201,109,.5);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --paper:#242920; --bg:#11150e; --ink:#efe8d3; --ink-soft:#c4bb9f; --line:#3e4638; --forest:#a9c6a1; --rust:#f09a63; --gold:#e6bc45; --tape:rgba(201,151,13,.3) }
+    color-scheme: dark;
+    --paper:#1e3358; --bg:#14213d; --ink:#f5f0e1; --ink-soft:#c9c0a3;
+    --line:#35507f; --forest:#8ac926; --forest-deep:#0c1526;
+    --rust:#fca311; --gold:#fca311; --tape:rgba(252,163,17,.55);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lora",Georgia,serif;font-size:17px;line-height:1.75}
@@ -33,25 +31,24 @@
   header.top p a{font-weight:700}
 
   main{max-width:760px;margin:0 auto;padding:0 16px 20px}
-  article.tour{background:var(--paper);margin:28px 0;padding:30px 26px 26px;box-shadow:0 4px 18px rgba(42,35,24,.12)}
+  article.tour{background:var(--paper);margin:28px 0;padding:30px 26px 26px;box-shadow:0 4px 18px rgba(0,0,0,.35);border:1px solid var(--line)}
   @media(max-width:560px){article.tour{padding:24px 18px 22px}}
   .date{font-family:"Caveat",cursive;font-size:1.4rem;color:var(--rust);line-height:1.1;margin:0}
   article.tour h2{font-size:clamp(1.6rem,4.5vw,2.1rem);line-height:1.2;margin:4px 0 4px}
   .where{font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 16px;font-weight:600}
   article.tour p{margin:0 0 14px}
-  figure.photo{background:#fff;padding:9px 9px 34px;box-shadow:0 6px 16px rgba(0,0,0,.16);position:relative;margin:18px 0 6px}
-  @media (prefers-color-scheme: dark){figure.photo{background:#e9e2c8}}
+  figure.photo{background:#f5f0e1;padding:9px 9px 34px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:18px 0 6px}
   figure.photo img{width:100%;aspect-ratio:16/10;object-fit:cover}
-  figure.photo figcaption{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-family:"Caveat",cursive;font-size:1.2rem;color:#2a2318;line-height:1;padding:0 8px}
+  figure.photo figcaption{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-family:"Caveat",cursive;font-size:1.2rem;color:#14213d;line-height:1;padding:0 8px}
   figure.photo::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);width:100px;height:22px;background:var(--tape);z-index:2}
   .tilt-l{transform:rotate(-.8deg)} .tilt-r{transform:rotate(.8deg)}
   .credit{font-size:.78rem;color:var(--ink-soft);font-style:italic;margin:2px 0 12px !important}
   .on-fb{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:.93rem;color:var(--ink-soft)}
   .on-fb a{font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold)}
-  .on-fb a:hover{color:var(--rust)}
-  .no-photo{background:var(--forest-deep);color:#ece5c8;text-align:center;padding:22px 18px;margin:16px 0}
-  .no-photo .hand{font-size:1.7rem;color:#f3d67a;display:block}
-  .no-photo p{margin:4px 0 0;font-size:.92rem;color:#cfc7a8}
+  .on-fb a:hover{color:var(--forest)}
+  .no-photo{background:var(--forest-deep);color:#f5f0e1;text-align:center;padding:22px 18px;margin:16px 0;border:1px solid var(--line)}
+  .no-photo .hand{font-size:1.7rem;color:#fca311;display:block}
+  .no-photo p{margin:4px 0 0;font-size:.92rem;color:#c9c0a3}
 
   footer{max-width:760px;margin:0 auto;padding:10px 20px 44px;text-align:center;color:var(--ink-soft);font-size:.9rem}
   footer .hand{font-size:1.35rem;color:var(--ink);display:block}
