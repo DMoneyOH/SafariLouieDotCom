@@ -1242,21 +1242,30 @@
   .no-photo .hand{font-size:1.7rem;color:#fca311;display:block}
   .no-photo p{margin:4px 0 0;font-size:.92rem;color:#c9c0a3}
 
-  .tour-index{max-width:1180px;margin:34px auto 0;padding:26px 20px 8px;border-top:1px solid var(--line)}
-  .tour-index h2{font-size:1.5rem;margin:0 0 6px}
-  .tour-index .idx-intro{color:var(--ink-soft);max-width:46em;margin:0 0 18px}
-  .idx-groups{display:grid;grid-template-columns:1fr 1fr;gap:6px 34px}
-  @media(max-width:860px){.idx-groups{grid-template-columns:1fr}}
-  .idx-group h3{font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;color:var(--rust);margin:14px 0 6px;font-weight:700}
-  .idx-group ul{list-style:none;margin:0 0 8px;padding:0}
-  .idx-group li{margin:0 0 5px;font-size:.95rem}
-  .idx-group a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-  .idx-group a:hover{color:var(--forest);border-bottom-color:var(--forest)}
-  .idx-date{color:var(--ink-soft);font-size:.8rem}
-  .discover{max-width:1180px;margin:26px auto 0;padding:22px 20px 4px;border-top:1px solid var(--line);color:var(--ink-soft)}
-  .discover h2{font-size:1.3rem;color:var(--ink);margin:0 0 8px}
-  .discover p{max-width:52em;margin:0 0 10px}
-  .discover a{font-weight:700}
+  .view-nav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 4px}
+  .view-nav a{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink-soft);font-family:"Lora",Georgia,serif;font-size:1rem;font-weight:700;padding:11px 20px;cursor:pointer;text-decoration:none}
+  .view-nav a:hover{border-color:var(--gold);color:var(--ink)}
+  .view-nav a[aria-current="page"]{background:var(--gold);color:#14213d;border-color:var(--gold)}
+  .zoo-filter{margin:18px 0 2px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);scroll-margin-top:100px}
+  .zoo-filter h2{font-size:1.05rem;margin:0 0 4px}
+  .zoo-filter .filter-note{color:var(--ink-soft);margin:0 0 12px;font-size:.94rem}
+  .filter-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .filter-chip{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);font-family:"Lora",Georgia,serif;font-size:.92rem;font-weight:700;padding:9px 14px;cursor:pointer}
+  .filter-chip .chip-count{color:var(--ink-soft);font-weight:400;font-size:.85rem}
+  .filter-chip:hover{border-color:var(--gold)}
+  .filter-chip[aria-pressed="true"]{background:var(--gold);color:#14213d;border-color:var(--gold)}
+  .filter-chip[aria-pressed="true"] .chip-count{color:#14213d}
+  .filter-status{color:var(--ink-soft);margin:12px 0 0;font-size:.94rem}
+  .filter-status strong{color:var(--ink)}
+  .about-view{max-width:760px;margin:10px 0 0;padding:8px 2px 4px;color:var(--ink-soft)}
+  .about-view[hidden]{display:none}
+  .about-view h2{font-size:clamp(1.7rem,5vw,2.2rem);color:var(--ink);margin:0 0 6px;line-height:1.15}
+  .about-view .about-lede{font-family:"Caveat",cursive;font-size:1.5rem;color:var(--rust);margin:0 0 14px;line-height:1.2}
+  .about-view p{margin:0 0 12px;font-size:1.02rem;line-height:1.7}
+  .about-view a{font-weight:700}
+  .about-view .back-to-tours{display:inline-block;margin-top:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;text-decoration:none;padding:11px 18px}
+  .about-view .back-to-tours:hover{border-color:var(--gold);color:var(--gold)}
+  #toursView[hidden]{display:none}
 
   footer{max-width:760px;margin:0 auto;padding:10px 20px 44px;text-align:center;color:var(--ink-soft);font-size:.9rem}
   footer .hand{font-size:1.35rem;color:var(--ink);display:block}
@@ -1288,9 +1297,30 @@
 </div>
 
 <main id="toursTop">
+<nav class="view-nav" aria-label="Site pages">
+  <a href="#tours" id="navTours" aria-current="page">Photo Tours</a>
+  <a href="#about" id="navAbout">About Louie</a>
+</nav>
+
+<div id="toursView">
+<section class="zoo-filter" aria-labelledby="zooFilterTitle">
+  <h2 id="zooFilterTitle">Browse tours by zoo</h2>
+  <p class="filter-note">Pick a zoo or aquarium to see just Louie's tours from there — or see them all, newest first.</p>
+  <div class="filter-chips" role="group" aria-label="Filter tours by zoo">
+    <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">All tours <span class="chip-count">(48)</span></button>
+    <button class="filter-chip" type="button" data-filter="columbus" aria-pressed="false">Columbus Zoo <span class="chip-count">(16)</span></button>
+    <button class="filter-chip" type="button" data-filter="cincinnati" aria-pressed="false">Cincinnati Zoo <span class="chip-count">(21)</span></button>
+    <button class="filter-chip" type="button" data-filter="louisville" aria-pressed="false">Louisville Zoo <span class="chip-count">(4)</span></button>
+    <button class="filter-chip" type="button" data-filter="newport" aria-pressed="false">Newport Aquarium <span class="chip-count">(1)</span></button>
+    <button class="filter-chip" type="button" data-filter="disney" aria-pressed="false">Disney's Animal Kingdom <span class="chip-count">(1)</span></button>
+    <button class="filter-chip" type="button" data-filter="more" aria-pressed="false">Field notes &amp; more <span class="chip-count">(5)</span></button>
+  </div>
+  <p class="filter-status" id="filterStatus" role="status">Showing <strong>all 48 tours</strong>, newest first.</p>
+</section>
+
 <div class="tours-grid" id="toursGrid">
 
-  <article id="fiona-the-hippo" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="fiona-the-hippo" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-19">19 November 2026</time></p>
     <h2>Fiona the Hippo</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · In memory</p>
@@ -1307,7 +1337,7 @@
       </div>
   </article>
 
-  <article id="a-walk-around-columbus" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="a-walk-around-columbus" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-18">18 November 2026</time></p>
     <h2>A Walk Around Columbus</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · field notes</p>
@@ -1325,7 +1355,7 @@
       </div>
   </article>
 
-  <article id="asia-quest-at-20" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="asia-quest-at-20" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-09">9 November 2026</time></p>
     <h2>Asia Quest at 20</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #1, revisited</p>
@@ -1344,7 +1374,7 @@
       </div>
   </article>
 
-  <article id="the-passenger-pigeon-memorial" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-passenger-pigeon-memorial" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-04">4 November 2026</time></p>
     <h2>The Passenger Pigeon Memorial</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #38</p>
@@ -1362,7 +1392,7 @@
       </div>
   </article>
 
-  <article id="halloween-at-the-zoo" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="halloween-at-the-zoo" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-01">1 November 2026</time></p>
     <h2>Halloween at the Zoo</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden</p>
@@ -1380,7 +1410,7 @@
       </div>
   </article>
 
-  <article id="boo-a-pileated-gibbon" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="boo-a-pileated-gibbon" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-11-01">1 November 2026</time></p>
     <h2>Boo, a Pileated Gibbon</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · New species unlocked</p>
@@ -1397,7 +1427,7 @@
       </div>
   </article>
 
-  <article id="glacier-run" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="glacier-run" class="tour" data-zoo="louisville" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-18">18 October 2026</time></p>
     <h2>Glacier Run</h2>
     <p class="where">Louisville Zoo · Photo Tour #37</p>
@@ -1414,7 +1444,7 @@
       </div>
   </article>
 
-  <article id="gorilla-forest" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="gorilla-forest" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-18">18 October 2026</time></p>
     <h2>Gorilla Forest</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #36</p>
@@ -1436,7 +1466,7 @@
       </div>
   </article>
 
-  <article id="the-herpaquarium" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-herpaquarium" class="tour" data-zoo="louisville" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-18">18 October 2026</time></p>
     <h2>The HerpAquarium</h2>
     <p class="where">Louisville Zoo · Photo Tour #35</p>
@@ -1454,7 +1484,7 @@
       </div>
   </article>
 
-  <article id="the-islands" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-islands" class="tour" data-zoo="louisville" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-18">18 October 2026</time></p>
     <h2>The Islands</h2>
     <p class="where">Louisville Zoo · Photo Tour #34</p>
@@ -1472,7 +1502,7 @@
       </div>
   </article>
 
-  <article id="tiger-taiga-and-snow-leopard-pass" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="tiger-taiga-and-snow-leopard-pass" class="tour" data-zoo="louisville" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-18">18 October 2026</time></p>
     <h2>Tiger Taiga &amp; Snow Leopard Pass</h2>
     <p class="where">Louisville Zoo · Photo Tour #33</p>
@@ -1490,7 +1520,7 @@
       </div>
   </article>
 
-  <article id="adventure-cove" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="adventure-cove" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-10-06">6 October 2026</time></p>
     <h2>Adventure Cove</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #32</p>
@@ -1509,7 +1539,7 @@
       </div>
   </article>
 
-  <article id="australia-and-the-islands" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="australia-and-the-islands" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-09-14">14 September 2026</time></p>
     <h2>Australia &amp; The Islands</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #31</p>
@@ -1527,7 +1557,7 @@
       </div>
   </article>
 
-  <article id="congo-expedition" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="congo-expedition" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-09-14">14 September 2026</time></p>
     <h2>Congo Expedition</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #30</p>
@@ -1545,7 +1575,7 @@
       </div>
   </article>
 
-  <article id="nocturnal-and-aviary-building" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="nocturnal-and-aviary-building" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-09-13">13 September 2026</time></p>
     <h2>Nocturnal &amp; Aviary Building</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #29</p>
@@ -1563,7 +1593,7 @@
       </div>
   </article>
 
-  <article id="shores-and-aquarium" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="shores-and-aquarium" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-09-13">13 September 2026</time></p>
     <h2>Shores &amp; Aquarium</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #28</p>
@@ -1582,7 +1612,7 @@
       </div>
   </article>
 
-  <article id="heart-of-africa" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="heart-of-africa" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-08-13">13 August 2026</time></p>
     <h2>Heart of Africa</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #27</p>
@@ -1604,7 +1634,7 @@
       </div>
   </article>
 
-  <article id="kilimanjaro-safaris" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="kilimanjaro-safaris" class="tour" data-zoo="disney" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-07-21">21 July 2026</time></p>
     <h2>Kilimanjaro Safaris</h2>
     <p class="where">Disney's Animal Kingdom, Florida · Photo Tour #26</p>
@@ -1621,7 +1651,7 @@
       </div>
   </article>
 
-  <article id="back-from-the-sunshine-state" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="back-from-the-sunshine-state" class="tour" data-zoo="more" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-07-18">18 July 2026</time></p>
     <h2>Back from the Sunshine State</h2>
     <p class="where">Florida · field notes</p>
@@ -1637,7 +1667,7 @@
       </div>
   </article>
 
-  <article id="lemur-lookout-and-dragons" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="lemur-lookout-and-dragons" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-25">25 June 2026</time></p>
     <h2>Lemur Lookout &amp; Dragons</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #25</p>
@@ -1659,7 +1689,7 @@
       </div>
   </article>
 
-  <article id="jungle-trails" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="jungle-trails" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-18">18 June 2026</time></p>
     <h2>Jungle Trails</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #24</p>
@@ -1676,7 +1706,7 @@
       </div>
   </article>
 
-  <article id="the-new-elephant-trek" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-new-elephant-trek" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-09">9 June 2026</time></p>
     <h2>The NEW Elephant Trek</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #23</p>
@@ -1694,7 +1724,7 @@
       </div>
   </article>
 
-  <article id="bear-ridge-and-sea-otter-coast" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="bear-ridge-and-sea-otter-coast" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-02">2 June 2026</time></p>
     <h2>Bear Ridge &amp; Sea Otter Coast</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #22</p>
@@ -1715,7 +1745,7 @@
       </div>
   </article>
 
-  <article id="the-whole-newport-aquarium" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-whole-newport-aquarium" class="tour" data-zoo="newport" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-01">1 June 2026</time></p>
     <h2>The Whole Newport Aquarium</h2>
     <p class="where">Newport, Kentucky · Photo Tour #21</p>
@@ -1733,7 +1763,7 @@
   </article>
 
 
-  <article id="a-beautiful-weekend-in-cincinnati" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="a-beautiful-weekend-in-cincinnati" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-06-01">1 June 2026</time></p>
     <h2>A Beautiful Weekend in Cincinnati</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · field notes</p>
@@ -1750,7 +1780,7 @@
       </div>
   </article>
 
-  <article id="a-crazy-week-in-columbus" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="a-crazy-week-in-columbus" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-05-06">6 May 2026</time></p>
     <h2>A Crazy Week in Columbus</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · field notes</p>
@@ -1767,7 +1797,7 @@
       </div>
   </article>
 
-  <article id="birders" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="birders" class="tour" data-zoo="more" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-04-26">26 April 2026</time></p>
     <h2>Birders</h2>
     <p class="where">Ohio native birds · field notes</p>
@@ -1784,7 +1814,7 @@
       </div>
   </article>
 
-  <article id="earth-day-with-lewis-the-tiger" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="earth-day-with-lewis-the-tiger" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-04-22">22 April 2026</time></p>
     <h2>Earth Day with Lewis the Tiger</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Earth Day reel</p>
@@ -1802,7 +1832,7 @@
       </div>
   </article>
 
-  <article id="spring-photo-shooting" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="spring-photo-shooting" class="tour" data-zoo="more" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-04-16">16 April 2026</time></p>
     <h2>Spring Photo Shooting</h2>
     <p class="where">field notes</p>
@@ -1819,7 +1849,7 @@
       </div>
   </article>
 
-  <article id="tylers-request-a-hometown-safari" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="tylers-request-a-hometown-safari" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-03-30">30 March 2026</time></p>
     <h2>Tyler's Request: A HomeTown Safari</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · field notes</p>
@@ -1836,7 +1866,7 @@
       </div>
   </article>
 
-  <article id="birthday-weekend-with-the-tigers" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="birthday-weekend-with-the-tigers" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-03-08">8 March 2026</time></p>
     <h2>Birthday Weekend with the Tigers</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · field notes</p>
@@ -1853,7 +1883,7 @@
       </div>
   </article>
 
-  <article id="manatee-springs" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="manatee-springs" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-18">18 February 2026</time></p>
     <h2>Manatee Springs</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #20</p>
@@ -1871,7 +1901,7 @@
       </div>
   </article>
 
-  <article id="world-of-the-insect" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="world-of-the-insect" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-17">17 February 2026</time></p>
     <h2>World Of The Insect</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #19</p>
@@ -1889,7 +1919,7 @@
       </div>
   </article>
 
-  <article id="wolf-woods" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="wolf-woods" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-16">16 February 2026</time></p>
     <h2>Wolf Woods</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #18</p>
@@ -1906,7 +1936,7 @@
       </div>
   </article>
 
-  <article id="africa" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="africa" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-15">15 February 2026</time></p>
     <h2>Africa</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #17</p>
@@ -1924,7 +1954,7 @@
       </div>
   </article>
 
-  <article id="the-historic-reptile-house" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-historic-reptile-house" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-14">14 February 2026</time></p>
     <h2>The Historic Reptile House</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #16</p>
@@ -1941,7 +1971,7 @@
       </div>
   </article>
 
-  <article id="roo-valley" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="roo-valley" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-13">13 February 2026</time></p>
     <h2>Roo Valley</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #15</p>
@@ -1959,7 +1989,7 @@
       </div>
   </article>
 
-  <article id="eagle-eyrie" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="eagle-eyrie" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-12">12 February 2026</time></p>
     <h2>Eagle Eyrie</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #14</p>
@@ -1977,7 +2007,7 @@
       </div>
   </article>
 
-  <article id="wings-of-the-world" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="wings-of-the-world" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-11">11 February 2026</time></p>
     <h2>Wings Of The World</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #13</p>
@@ -1995,7 +2025,7 @@
       </div>
   </article>
 
-  <article id="first-wild-adventure-of-2026" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="first-wild-adventure-of-2026" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-10">10 February 2026</time></p>
     <h2>First Wild Adventure of 2026</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · field notes</p>
@@ -2012,7 +2042,7 @@
       </div>
   </article>
 
-  <article id="two-wild-days" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="two-wild-days" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2026-02-10">10 February 2026</time></p>
     <h2>Two Wild Days</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · field notes</p>
@@ -2029,7 +2059,7 @@
       </div>
   </article>
 
-  <article id="2025-a-year-that-was-wild" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="2025-a-year-that-was-wild" class="tour" data-zoo="more" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-12-30">30 December 2025</time></p>
     <h2>2025: A Year That Was Wild</h2>
     <p class="where">Year in Review · Five AZA Zoos &amp; Beyond</p>
@@ -2052,7 +2082,7 @@
       </div>
   </article>
 
-  <article id="merry-christmas-from-the-safari-family" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="merry-christmas-from-the-safari-family" class="tour" data-zoo="more" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-12-10">10 December 2025</time></p>
     <h2>Merry Christmas from the Safari Family</h2>
     <p class="where">Season's Greetings</p>
@@ -2068,7 +2098,7 @@
       </div>
   </article>
 
-  <article id="a-last-warm-day-in-columbus" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="a-last-warm-day-in-columbus" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-11-15">15 November 2025</time></p>
     <h2>A Last Warm Day in Columbus</h2>
     <p class="where">Columbus Zoo &amp; Aquarium</p>
@@ -2085,7 +2115,7 @@
       </div>
   </article>
 
-  <article id="new-species-the-socorro-dove" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="new-species-the-socorro-dove" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-11-15">15 November 2025</time></p>
     <h2>New Species: The Socorro Dove</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · North America Trek Aviary</p>
@@ -2105,7 +2135,7 @@
       </div>
   </article>
 
-  <article id="new-birds-and-cute-newcomers" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="new-birds-and-cute-newcomers" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-11-06">6 November 2025</time></p>
     <h2>New Birds &amp; Cute Newcomers</h2>
     <p class="where">Columbus Zoo &amp; Aquarium</p>
@@ -2121,7 +2151,7 @@
       </div>
   </article>
 
-  <article id="cat-canyon" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="cat-canyon" class="tour" data-zoo="cincinnati" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-11-02">2 November 2025</time></p>
     <h2>Cat Canyon</h2>
     <p class="where">Cincinnati Zoo &amp; Botanical Garden · Photo Tour #12</p>
@@ -2142,7 +2172,7 @@
       </div>
   </article>
 
-  <article id="the-herpetarium" class="tour" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
+  <article id="the-herpetarium" class="tour" data-zoo="columbus" tabindex="0" role="button" aria-haspopup="dialog" title="Open the full tour">
     <p class="date"><time datetime="2025-10-28">28 October 2025</time></p>
     <h2>The Herpetarium</h2>
     <p class="where">Columbus Zoo &amp; Aquarium · Photo Tour #11</p>
@@ -2176,37 +2206,27 @@
   <button class="pager-btn" id="nextBtn" type="button">Older tours →</button>
 </nav>
 
-<section class="tour-index" id="allTours" aria-labelledby="allToursTitle">
-  <h2 id="allToursTitle">Every tour, by zoo</h2>
-  <p class="idx-intro">All 48 of Louie's photo tours, grouped by the zoo or aquarium he visited — Columbus Zoo and Aquarium, Cincinnati Zoo &amp; Botanical Garden, Louisville Zoo, Newport Aquarium, Disney's Animal Kingdom, and Ohio wildlife closer to home. Pick a tour to jump straight to it.</p>
-  <div class="idx-groups">
-<div class="idx-group"><h3>Cincinnati Zoo &amp; Botanical Garden</h3><ul><li><a href="#fiona-the-hippo" data-tour-link="fiona-the-hippo">Fiona the Hippo</a> <span class="idx-date">2026</span></li><li><a href="#the-passenger-pigeon-memorial" data-tour-link="the-passenger-pigeon-memorial">The Passenger Pigeon Memorial</a> <span class="idx-date">2026</span></li><li><a href="#halloween-at-the-zoo" data-tour-link="halloween-at-the-zoo">Halloween at the Zoo</a> <span class="idx-date">2026</span></li><li><a href="#boo-a-pileated-gibbon" data-tour-link="boo-a-pileated-gibbon">Boo, a Pileated Gibbon</a> <span class="idx-date">2026</span></li><li><a href="#lemur-lookout-and-dragons" data-tour-link="lemur-lookout-and-dragons">Lemur Lookout &amp; Dragons</a> <span class="idx-date">2026</span></li><li><a href="#jungle-trails" data-tour-link="jungle-trails">Jungle Trails</a> <span class="idx-date">2026</span></li><li><a href="#the-new-elephant-trek" data-tour-link="the-new-elephant-trek">The NEW Elephant Trek</a> <span class="idx-date">2026</span></li><li><a href="#bear-ridge-and-sea-otter-coast" data-tour-link="bear-ridge-and-sea-otter-coast">Bear Ridge &amp; Sea Otter Coast</a> <span class="idx-date">2026</span></li><li><a href="#a-beautiful-weekend-in-cincinnati" data-tour-link="a-beautiful-weekend-in-cincinnati">A Beautiful Weekend in Cincinnati</a> <span class="idx-date">2026</span></li><li><a href="#earth-day-with-lewis-the-tiger" data-tour-link="earth-day-with-lewis-the-tiger">Earth Day with Lewis the Tiger</a> <span class="idx-date">2026</span></li><li><a href="#tylers-request-a-hometown-safari" data-tour-link="tylers-request-a-hometown-safari">Tyler&#x27;s Request: A HomeTown Safari</a> <span class="idx-date">2026</span></li><li><a href="#manatee-springs" data-tour-link="manatee-springs">Manatee Springs</a> <span class="idx-date">2026</span></li><li><a href="#world-of-the-insect" data-tour-link="world-of-the-insect">World Of The Insect</a> <span class="idx-date">2026</span></li><li><a href="#wolf-woods" data-tour-link="wolf-woods">Wolf Woods</a> <span class="idx-date">2026</span></li><li><a href="#africa" data-tour-link="africa">Africa</a> <span class="idx-date">2026</span></li><li><a href="#the-historic-reptile-house" data-tour-link="the-historic-reptile-house">The Historic Reptile House</a> <span class="idx-date">2026</span></li><li><a href="#roo-valley" data-tour-link="roo-valley">Roo Valley</a> <span class="idx-date">2026</span></li><li><a href="#eagle-eyrie" data-tour-link="eagle-eyrie">Eagle Eyrie</a> <span class="idx-date">2026</span></li><li><a href="#wings-of-the-world" data-tour-link="wings-of-the-world">Wings Of The World</a> <span class="idx-date">2026</span></li><li><a href="#first-wild-adventure-of-2026" data-tour-link="first-wild-adventure-of-2026">First Wild Adventure of 2026</a> <span class="idx-date">2026</span></li><li><a href="#cat-canyon" data-tour-link="cat-canyon">Cat Canyon</a> <span class="idx-date">2025</span></li></ul></div>
-<div class="idx-group"><h3>Columbus Zoo &amp; Aquarium</h3><ul><li><a href="#a-walk-around-columbus" data-tour-link="a-walk-around-columbus">A Walk Around Columbus</a> <span class="idx-date">2026</span></li><li><a href="#asia-quest-at-20" data-tour-link="asia-quest-at-20">Asia Quest at 20</a> <span class="idx-date">2026</span></li><li><a href="#gorilla-forest" data-tour-link="gorilla-forest">Gorilla Forest</a> <span class="idx-date">2026</span></li><li><a href="#adventure-cove" data-tour-link="adventure-cove">Adventure Cove</a> <span class="idx-date">2026</span></li><li><a href="#australia-and-the-islands" data-tour-link="australia-and-the-islands">Australia &amp; The Islands</a> <span class="idx-date">2026</span></li><li><a href="#congo-expedition" data-tour-link="congo-expedition">Congo Expedition</a> <span class="idx-date">2026</span></li><li><a href="#nocturnal-and-aviary-building" data-tour-link="nocturnal-and-aviary-building">Nocturnal &amp; Aviary Building</a> <span class="idx-date">2026</span></li><li><a href="#shores-and-aquarium" data-tour-link="shores-and-aquarium">Shores &amp; Aquarium</a> <span class="idx-date">2026</span></li><li><a href="#heart-of-africa" data-tour-link="heart-of-africa">Heart of Africa</a> <span class="idx-date">2026</span></li><li><a href="#a-crazy-week-in-columbus" data-tour-link="a-crazy-week-in-columbus">A Crazy Week in Columbus</a> <span class="idx-date">2026</span></li><li><a href="#birthday-weekend-with-the-tigers" data-tour-link="birthday-weekend-with-the-tigers">Birthday Weekend with the Tigers</a> <span class="idx-date">2026</span></li><li><a href="#two-wild-days" data-tour-link="two-wild-days">Two Wild Days</a> <span class="idx-date">2026</span></li><li><a href="#a-last-warm-day-in-columbus" data-tour-link="a-last-warm-day-in-columbus">A Last Warm Day in Columbus</a> <span class="idx-date">2025</span></li><li><a href="#new-species-the-socorro-dove" data-tour-link="new-species-the-socorro-dove">New Species: The Socorro Dove</a> <span class="idx-date">2025</span></li><li><a href="#new-birds-and-cute-newcomers" data-tour-link="new-birds-and-cute-newcomers">New Birds &amp; Cute Newcomers</a> <span class="idx-date">2025</span></li><li><a href="#the-herpetarium" data-tour-link="the-herpetarium">The Herpetarium</a> <span class="idx-date">2025</span></li></ul></div>
-<div class="idx-group"><h3>Louisville Zoo</h3><ul><li><a href="#glacier-run" data-tour-link="glacier-run">Glacier Run</a> <span class="idx-date">2026</span></li><li><a href="#the-herpaquarium" data-tour-link="the-herpaquarium">The HerpAquarium</a> <span class="idx-date">2026</span></li><li><a href="#the-islands" data-tour-link="the-islands">The Islands</a> <span class="idx-date">2026</span></li><li><a href="#tiger-taiga-and-snow-leopard-pass" data-tour-link="tiger-taiga-and-snow-leopard-pass">Tiger Taiga &amp; Snow Leopard Pass</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Disney&#x27;s Animal Kingdom, Florida</h3><ul><li><a href="#kilimanjaro-safaris" data-tour-link="kilimanjaro-safaris">Kilimanjaro Safaris</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Florida</h3><ul><li><a href="#back-from-the-sunshine-state" data-tour-link="back-from-the-sunshine-state">Back from the Sunshine State</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Newport, Kentucky</h3><ul><li><a href="#the-whole-newport-aquarium" data-tour-link="the-whole-newport-aquarium">The Whole Newport Aquarium</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Ohio native birds</h3><ul><li><a href="#birders" data-tour-link="birders">Birders</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Field notes &amp; Ohio wildlife</h3><ul><li><a href="#spring-photo-shooting" data-tour-link="spring-photo-shooting">Spring Photo Shooting</a> <span class="idx-date">2026</span></li></ul></div>
-<div class="idx-group"><h3>Specials &amp; year in review</h3><ul><li><a href="#2025-a-year-that-was-wild" data-tour-link="2025-a-year-that-was-wild">2025: A Year That Was Wild</a> <span class="idx-date">2025</span></li><li><a href="#merry-christmas-from-the-safari-family" data-tour-link="merry-christmas-from-the-safari-family">Merry Christmas from the Safari Family</a> <span class="idx-date">2025</span></li></ul></div>
-  </div>
-</section>
+</div><!-- /#toursView -->
 
-<section class="discover" aria-labelledby="discoverTitle">
-  <h2 id="discoverTitle">About Safari Louie</h2>
+
+<section class="about-view" id="aboutView" aria-labelledby="aboutTitle" hidden>
+  <h2 id="aboutTitle">About Safari Louie</h2>
+  <p class="about-lede">Louie Eigensee — the man behind the camera</p>
   <p>Safari Louie is Louie Eigensee's home for the animal photo tours he has been posting since 2020. Louie has photographed more than 850 species — mammals, birds, reptiles and amphibians — and every tour here is told in his photos and his words: the habitats, the animals, and what makes each one worth the walk. Regular stops include Asia Quest, Heart of Africa and Congo Expedition at the Columbus Zoo; Elephant Trek, Jungle Trails and Hippo Cove at the Cincinnati Zoo; Glacier Run and the HerpAquarium at the Louisville Zoo; the whole Newport Aquarium in Kentucky; and Kilimanjaro Safaris at Disney's Animal Kingdom in Florida.</p>
-  <p>New tours are posted first on the <a href="https://facebook.com/SafariLouieE" target="_blank" rel="noopener">Safari Louie Facebook page</a> and added here newest first. Looking for a particular animal? Try the tour list above — Fiona the hippo, the red pandas of Asia Quest, Lewis &amp; Clark the Amur tigers, the manatees of Manatee Springs and the Socorro dove are all in there.</p>
+  <p>New tours are posted first on the <a href="https://facebook.com/SafariLouieE" target="_blank" rel="noopener">Safari Louie Facebook page</a> and added here newest first. Looking for a particular animal? Head back to the photo tours and use the zoo filter at the top — Fiona the hippo, the red pandas of Asia Quest, Lewis &amp; Clark the Amur tigers, the manatees of Manatee Springs and the Socorro dove are all in there.</p>
+  <a class="back-to-tours" href="#tours">← Back to the photo tours</a>
 </section>
 
 </main>
 
 <footer>
   <span class="hand">— thanks for walking with Louie —</span>
+  <p style="margin:0 0 10px"><a href="#about" style="color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold)">About Louie →</a></p>
   Every tour here was posted first on the <a href="https://facebook.com/SafariLouieE" target="_blank" rel="noopener">Safari Louie Facebook page</a>, with its full set of photos. Follow him there for the next one.<br />
   Photos marked as Louie's are from his posts. Animal portraits: Columbus Zoo and Aquarium, Cincinnati Zoo &amp; Botanical Garden, Metro Richmond Zoo, and Newport Aquarium.
   <details style="margin-top:16px;text-align:left;max-width:560px;margin-left:auto;margin-right:auto">
     <summary style="cursor:pointer;font-weight:700;color:var(--ink)">Site owner: getting Safari Louie into Google search</summary>
-    <p style="margin:8px 0">The site itself is ready — keyword-rich titles and descriptions, structured data for all 48 tours, a crawlable tour index, and a sitemap at <a href="data:application/octet-stream;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSIgeG1sbnM6aW1hZ2U9Imh0dHA6Ly93d3cuZ29vZ2xlLmNvbS9zY2hlbWFzL3NpdGVtYXAtaW1hZ2UvMS4xIj4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vPC9sb2M+PGxhc3Rtb2Q+MjAyNi0xMS0xOTwvbGFzdG1vZD48Y2hhbmdlZnJlcT53ZWVrbHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjEuMDwvcHJpb3JpdHk+PC91cmw+CiAgPHVybD48bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTI8L2xvYz48bGFzdG1vZD4yMDI2LTEwLTE4PC9sYXN0bW9kPjxjaGFuZ2VmcmVxPndlZWtseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC44PC9wcmlvcml0eT48L3VybD4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MzwvbG9jPjxsYXN0bW9kPjIwMjYtMDgtMTM8L2xhc3Rtb2Q+PGNoYW5nZWZyZXE+d2Vla2x5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjg8L3ByaW9yaXR5PjwvdXJsPgogIDx1cmw+PGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00PC9sb2M+PGxhc3Rtb2Q+MjAyNi0wNi0wMTwvbGFzdG1vZD48Y2hhbmdlZnJlcT53ZWVrbHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuODwvcHJpb3JpdHk+PC91cmw+CiAgPHVybD48bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTU8L2xvYz48bGFzdG1vZD4yMDI2LTAyLTE3PC9sYXN0bW9kPjxjaGFuZ2VmcmVxPndlZWtseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC44PC9wcmlvcml0eT48L3VybD4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NjwvbG9jPjxsYXN0bW9kPjIwMjYtMDItMTA8L2xhc3Rtb2Q+PGNoYW5nZWZyZXE+d2Vla2x5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjg8L3ByaW9yaXR5PjwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZmlvbmEtdGhlLWhpcHBvPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTExLTE5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9maW9uYS1oaXBwby5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RmlvbmEgdGhlIEhpcHBvIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0xI2Etd2Fsay1hcm91bmQtY29sdW1idXM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTEtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3dhbGstY29sdW1idXMuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkEgV2FsayBBcm91bmQgQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNhc2lhLXF1ZXN0LWF0LTIwPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTExLTA5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yZWQtcGFuZGEuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkFzaWEgUXVlc3QgYXQgMjAg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSN0aGUtcGFzc2VuZ2VyLXBpZ2Vvbi1tZW1vcmlhbDwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMS0wNDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvcGlnZW9uLW1lbW9yaWFsLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgUGFzc2VuZ2VyIFBpZ2VvbiBNZW1vcmlhbCDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNoYWxsb3dlZW4tYXQtdGhlLXpvbzwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMS0wMTwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGFsbG93ZWVuLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5IYWxsb3dlZW4gYXQgdGhlIFpvbyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNib28tYS1waWxlYXRlZC1naWJib248L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTEtMDE8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2Jvby1naWJib24uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkJvbywgYSBQaWxlYXRlZCBHaWJib24g4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZ2xhY2llci1ydW48L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTAtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2dsYWNpZXItcnVuLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5HbGFjaWVyIFJ1biDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIExvdWlzdmlsbGUgWm9vPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZ29yaWxsYS1mb3Jlc3Q8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTAtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2dvcmlsbGEuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkdvcmlsbGEgRm9yZXN0IOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjdGhlLWhlcnBhcXVhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGVycGFxdWFyaXVtLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgSGVycEFxdWFyaXVtIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgTG91aXN2aWxsZSBab288L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MiN0aGUtaXNsYW5kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaXNsYW5kcy5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+VGhlIElzbGFuZHMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBMb3Vpc3ZpbGxlIFpvbzwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI3RpZ2VyLXRhaWdhLWFuZC1zbm93LWxlb3BhcmQtcGFzczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdGlnZXItdGFpZ2EuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlRpZ2VyIFRhaWdhICZhbXA7IFNub3cgTGVvcGFyZCBQYXNzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgTG91aXN2aWxsZSBab288L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MiNhZHZlbnR1cmUtY292ZTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0wNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc2VhLWxpb24uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkFkdmVudHVyZSBDb3ZlIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjYXVzdHJhbGlhLWFuZC10aGUtaXNsYW5kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wOS0xNDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvYXVzdHJhbGlhLWlzbGFuZHMuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkF1c3RyYWxpYSAmYW1wOyBUaGUgSXNsYW5kcyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI2NvbmdvLWV4cGVkaXRpb248L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTQ8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2NvbmdvLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Db25nbyBFeHBlZGl0aW9uIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjbm9jdHVybmFsLWFuZC1hdmlhcnktYnVpbGRpbmc8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTM8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL25vY3R1cm5hbC5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+Tm9jdHVybmFsICZhbXA7IEF2aWFyeSBCdWlsZGluZyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI3Nob3Jlcy1hbmQtYXF1YXJpdW08L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTM8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL21hbmF0ZWUuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlNob3JlcyAmYW1wOyBBcXVhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0zI2hlYXJ0LW9mLWFmcmljYTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wOC0xMzwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdG91cjI3LWhlYXJ0LW9mLWFmcmljYS53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkhlYXJ0IG9mIEFmcmljYSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0zI2tpbGltYW5qYXJvLXNhZmFyaXM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDctMjE8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3RvdXIyNi1raWxpbWFuamFyby53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPktpbGltYW5qYXJvIFNhZmFyaXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBEaXNuZXkmI3gyNztzIEFuaW1hbCBLaW5nZG9tLCBGbG9yaWRhPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjYmFjay1mcm9tLXRoZS1zdW5zaGluZS1zdGF0ZTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNy0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvZmxvcmlkYS10cmlwLndlYnA8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+QmFjayBmcm9tIHRoZSBTdW5zaGluZSBTdGF0ZSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIEZsb3JpZGE8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MyNsZW11ci1sb29rb3V0LWFuZC1kcmFnb25zPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTI1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy90b3VyMjUtbGVtdXIud2VicDwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5MZW11ciBMb29rb3V0ICZhbXA7IERyYWdvbnMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjanVuZ2xlLXRyYWlsczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNi0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdG91cjI0LWp1bmdsZS53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkp1bmdsZSBUcmFpbHMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjdGhlLW5ldy1lbGVwaGFudC10cmVrPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTA5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9lbGVwaGFudC10cmVrLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgTkVXIEVsZXBoYW50IFRyZWsg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjYmVhci1yaWRnZS1hbmQtc2VhLW90dGVyLWNvYXN0PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTAyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9ibGFjay1iZWFyLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5CZWFyIFJpZGdlICZhbXA7IFNlYSBPdHRlciBDb2FzdCDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MyN0aGUtd2hvbGUtbmV3cG9ydC1hcXVhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNi0wMTwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc2hhcmstcmF5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgV2hvbGUgTmV3cG9ydCBBcXVhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIE5ld3BvcnQsIEtlbnR1Y2t5PC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYS1iZWF1dGlmdWwtd2Vla2VuZC1pbi1jaW5jaW5uYXRpPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTAxPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jaW5jeS13ZWVrZW5kLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIEJlYXV0aWZ1bCBXZWVrZW5kIGluIENpbmNpbm5hdGkg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYS1jcmF6eS13ZWVrLWluLWNvbHVtYnVzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA1LTA2PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jb2x1bWJ1cy1tYXk2LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIENyYXp5IFdlZWsgaW4gQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NCNiaXJkZXJzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA0LTI2PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9iaXJkZXJzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5CaXJkZXJzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgT2hpbyBuYXRpdmUgYmlyZHM8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NCNlYXJ0aC1kYXktd2l0aC1sZXdpcy10aGUtdGlnZXI8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDQtMjI8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2VhcnRoLWRheS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RWFydGggRGF5IHdpdGggTGV3aXMgdGhlIFRpZ2VyIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00I3NwcmluZy1waG90by1zaG9vdGluZzwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNC0xNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc3ByaW5nLXNob290aW5nLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5TcHJpbmcgUGhvdG8gU2hvb3Rpbmcg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBmaWVsZCBub3RlczwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00I3R5bGVycy1yZXF1ZXN0LWEtaG9tZXRvd24tc2FmYXJpPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAzLTMwPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy90eWxlci1yZXF1ZXN0LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UeWxlciYjeDI3O3MgUmVxdWVzdDogQSBIb21lVG93biBTYWZhcmkg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYmlydGhkYXktd2Vla2VuZC13aXRoLXRoZS10aWdlcnM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDMtMDg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2JpcnRoZGF5LXdlZWtlbmQuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkJpcnRoZGF5IFdlZWtlbmQgd2l0aCB0aGUgVGlnZXJzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjbWFuYXRlZS1zcHJpbmdzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE4PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9tYW5hdGVlLXNwcmluZ3MuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPk1hbmF0ZWUgU3ByaW5ncyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSN3b3JsZC1vZi10aGUtaW5zZWN0PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE3PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy93b3JsZC1pbnNlY3QuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPldvcmxkIE9mIFRoZSBJbnNlY3Qg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTUjd29sZi13b29kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wMi0xNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvd29sZi13b29kcy5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+V29sZiBXb29kcyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSNhZnJpY2E8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDItMTU8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2FmcmljYS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+QWZyaWNhIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I3RoZS1oaXN0b3JpYy1yZXB0aWxlLWhvdXNlPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE0PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yZXB0aWxlLWhvdXNlLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgSGlzdG9yaWMgUmVwdGlsZSBIb3VzZSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSNyb28tdmFsbGV5PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTEzPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yb28tdmFsbGV5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Sb28gVmFsbGV5IOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I2VhZ2xlLWV5cmllPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTEyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9lYWdsZS1leXJpZS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RWFnbGUgRXlyaWUg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTUjd2luZ3Mtb2YtdGhlLXdvcmxkPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTExPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy93aW5ncy13b3JsZC5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+V2luZ3MgT2YgVGhlIFdvcmxkIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I2ZpcnN0LXdpbGQtYWR2ZW50dXJlLW9mLTIwMjY8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDItMTA8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2ZlYjEwLXF1ZWVuLWNpdHkuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkZpcnN0IFdpbGQgQWR2ZW50dXJlIG9mIDIwMjYg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjdHdvLXdpbGQtZGF5czwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wMi0xMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvZmViMTAtd2lsZC1kYXlzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Ud28gV2lsZCBEYXlzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjMjAyNS1hLXllYXItdGhhdC13YXMtd2lsZDwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMi0zMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMveWVhci1pbi1yZXZpZXcuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPjIwMjU6IEEgWWVhciBUaGF0IFdhcyBXaWxkIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgWWVhciBpbiBSZXZpZXc8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNtZXJyeS1jaHJpc3RtYXMtZnJvbS10aGUtc2FmYXJpLWZhbWlseTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMi0xMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvY2hyaXN0bWFzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5NZXJyeSBDaHJpc3RtYXMgZnJvbSB0aGUgU2FmYXJpIEZhbWlseSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIFNlYXNvbiYjeDI3O3MgR3JlZXRpbmdzPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjYS1sYXN0LXdhcm0tZGF5LWluLWNvbHVtYnVzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTE1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9sYXN0LXdhcm0tZGF5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIExhc3QgV2FybSBEYXkgaW4gQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNuZXctc3BlY2llcy10aGUtc29jb3Jyby1kb3ZlPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTE1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9zb2NvcnJvLWRvdmUuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPk5ldyBTcGVjaWVzOiBUaGUgU29jb3JybyBEb3ZlIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjbmV3LWJpcmRzLWFuZC1jdXRlLW5ld2NvbWVyczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMS0wNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvbmV3LWJpcmRzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5OZXcgQmlyZHMgJmFtcDsgQ3V0ZSBOZXdjb21lcnMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNjYXQtY2FueW9uPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTAyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jYXQtY2FueW9uLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5DYXQgQ2FueW9uIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT02I3RoZS1oZXJwZXRhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMC0yODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGVycGV0YXJpdW0uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlRoZSBIZXJwZXRhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KPC91cmxzZXQ+Cg==">assets/sitemap.xml</a> (also linked from <a href="data:text/plain;base64,VXNlci1hZ2VudDogKgpBbGxvdzogLwoKU2l0ZW1hcDogaHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vc2l0ZW1hcC54bWwKU2l0ZW1hcDogaHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3NpdGVtYXAueG1sCg==">robots.txt</a>). The one step only the site owner can do is claim the site in Google Search Console, because it needs the owner's Google account:</p>
+    <p style="margin:8px 0">The site itself is ready — keyword-rich titles and descriptions, structured data for all 48 tours, and a sitemap at <a href="data:application/octet-stream;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSIgeG1sbnM6aW1hZ2U9Imh0dHA6Ly93d3cuZ29vZ2xlLmNvbS9zY2hlbWFzL3NpdGVtYXAtaW1hZ2UvMS4xIj4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vPC9sb2M+PGxhc3Rtb2Q+MjAyNi0xMS0xOTwvbGFzdG1vZD48Y2hhbmdlZnJlcT53ZWVrbHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjEuMDwvcHJpb3JpdHk+PC91cmw+CiAgPHVybD48bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTI8L2xvYz48bGFzdG1vZD4yMDI2LTEwLTE4PC9sYXN0bW9kPjxjaGFuZ2VmcmVxPndlZWtseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC44PC9wcmlvcml0eT48L3VybD4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MzwvbG9jPjxsYXN0bW9kPjIwMjYtMDgtMTM8L2xhc3Rtb2Q+PGNoYW5nZWZyZXE+d2Vla2x5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjg8L3ByaW9yaXR5PjwvdXJsPgogIDx1cmw+PGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00PC9sb2M+PGxhc3Rtb2Q+MjAyNi0wNi0wMTwvbGFzdG1vZD48Y2hhbmdlZnJlcT53ZWVrbHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuODwvcHJpb3JpdHk+PC91cmw+CiAgPHVybD48bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTU8L2xvYz48bGFzdG1vZD4yMDI2LTAyLTE3PC9sYXN0bW9kPjxjaGFuZ2VmcmVxPndlZWtseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC44PC9wcmlvcml0eT48L3VybD4KICA8dXJsPjxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NjwvbG9jPjxsYXN0bW9kPjIwMjYtMDItMTA8L2xhc3Rtb2Q+PGNoYW5nZWZyZXE+d2Vla2x5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjg8L3ByaW9yaXR5PjwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZmlvbmEtdGhlLWhpcHBvPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTExLTE5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9maW9uYS1oaXBwby5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RmlvbmEgdGhlIEhpcHBvIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0xI2Etd2Fsay1hcm91bmQtY29sdW1idXM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTEtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3dhbGstY29sdW1idXMuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkEgV2FsayBBcm91bmQgQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNhc2lhLXF1ZXN0LWF0LTIwPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTExLTA5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yZWQtcGFuZGEuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkFzaWEgUXVlc3QgYXQgMjAg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSN0aGUtcGFzc2VuZ2VyLXBpZ2Vvbi1tZW1vcmlhbDwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMS0wNDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvcGlnZW9uLW1lbW9yaWFsLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgUGFzc2VuZ2VyIFBpZ2VvbiBNZW1vcmlhbCDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNoYWxsb3dlZW4tYXQtdGhlLXpvbzwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMS0wMTwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGFsbG93ZWVuLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5IYWxsb3dlZW4gYXQgdGhlIFpvbyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MSNib28tYS1waWxlYXRlZC1naWJib248L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTEtMDE8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2Jvby1naWJib24uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkJvbywgYSBQaWxlYXRlZCBHaWJib24g4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZ2xhY2llci1ydW48L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTAtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2dsYWNpZXItcnVuLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5HbGFjaWVyIFJ1biDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIExvdWlzdmlsbGUgWm9vPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTEjZ29yaWxsYS1mb3Jlc3Q8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMTAtMTg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2dvcmlsbGEuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkdvcmlsbGEgRm9yZXN0IOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjdGhlLWhlcnBhcXVhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGVycGFxdWFyaXVtLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgSGVycEFxdWFyaXVtIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgTG91aXN2aWxsZSBab288L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MiN0aGUtaXNsYW5kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaXNsYW5kcy5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+VGhlIElzbGFuZHMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBMb3Vpc3ZpbGxlIFpvbzwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI3RpZ2VyLXRhaWdhLWFuZC1zbm93LWxlb3BhcmQtcGFzczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdGlnZXItdGFpZ2EuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlRpZ2VyIFRhaWdhICZhbXA7IFNub3cgTGVvcGFyZCBQYXNzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgTG91aXN2aWxsZSBab288L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MiNhZHZlbnR1cmUtY292ZTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0xMC0wNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc2VhLWxpb24uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkFkdmVudHVyZSBDb3ZlIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjYXVzdHJhbGlhLWFuZC10aGUtaXNsYW5kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wOS0xNDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvYXVzdHJhbGlhLWlzbGFuZHMuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkF1c3RyYWxpYSAmYW1wOyBUaGUgSXNsYW5kcyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI2NvbmdvLWV4cGVkaXRpb248L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTQ8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2NvbmdvLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Db25nbyBFeHBlZGl0aW9uIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTIjbm9jdHVybmFsLWFuZC1hdmlhcnktYnVpbGRpbmc8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTM8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL25vY3R1cm5hbC5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+Tm9jdHVybmFsICZhbXA7IEF2aWFyeSBCdWlsZGluZyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0yI3Nob3Jlcy1hbmQtYXF1YXJpdW08L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDktMTM8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL21hbmF0ZWUuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlNob3JlcyAmYW1wOyBBcXVhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0zI2hlYXJ0LW9mLWFmcmljYTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wOC0xMzwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdG91cjI3LWhlYXJ0LW9mLWFmcmljYS53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkhlYXJ0IG9mIEFmcmljYSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT0zI2tpbGltYW5qYXJvLXNhZmFyaXM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDctMjE8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3RvdXIyNi1raWxpbWFuamFyby53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPktpbGltYW5qYXJvIFNhZmFyaXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBEaXNuZXkmI3gyNztzIEFuaW1hbCBLaW5nZG9tLCBGbG9yaWRhPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjYmFjay1mcm9tLXRoZS1zdW5zaGluZS1zdGF0ZTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNy0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvZmxvcmlkYS10cmlwLndlYnA8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+QmFjayBmcm9tIHRoZSBTdW5zaGluZSBTdGF0ZSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIEZsb3JpZGE8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MyNsZW11ci1sb29rb3V0LWFuZC1kcmFnb25zPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTI1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy90b3VyMjUtbGVtdXIud2VicDwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5MZW11ciBMb29rb3V0ICZhbXA7IERyYWdvbnMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjanVuZ2xlLXRyYWlsczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNi0xODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvdG91cjI0LWp1bmdsZS53ZWJwPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkp1bmdsZSBUcmFpbHMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjdGhlLW5ldy1lbGVwaGFudC10cmVrPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTA5PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9lbGVwaGFudC10cmVrLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgTkVXIEVsZXBoYW50IFRyZWsg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTMjYmVhci1yaWRnZS1hbmQtc2VhLW90dGVyLWNvYXN0PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTAyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9ibGFjay1iZWFyLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5CZWFyIFJpZGdlICZhbXA7IFNlYSBPdHRlciBDb2FzdCDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9MyN0aGUtd2hvbGUtbmV3cG9ydC1hcXVhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNi0wMTwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc2hhcmstcmF5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgV2hvbGUgTmV3cG9ydCBBcXVhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIE5ld3BvcnQsIEtlbnR1Y2t5PC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYS1iZWF1dGlmdWwtd2Vla2VuZC1pbi1jaW5jaW5uYXRpPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA2LTAxPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jaW5jeS13ZWVrZW5kLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIEJlYXV0aWZ1bCBXZWVrZW5kIGluIENpbmNpbm5hdGkg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYS1jcmF6eS13ZWVrLWluLWNvbHVtYnVzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA1LTA2PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jb2x1bWJ1cy1tYXk2LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIENyYXp5IFdlZWsgaW4gQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NCNiaXJkZXJzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTA0LTI2PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9iaXJkZXJzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5CaXJkZXJzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgT2hpbyBuYXRpdmUgYmlyZHM8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NCNlYXJ0aC1kYXktd2l0aC1sZXdpcy10aGUtdGlnZXI8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDQtMjI8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2VhcnRoLWRheS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RWFydGggRGF5IHdpdGggTGV3aXMgdGhlIFRpZ2VyIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00I3NwcmluZy1waG90by1zaG9vdGluZzwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wNC0xNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvc3ByaW5nLXNob290aW5nLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5TcHJpbmcgUGhvdG8gU2hvb3Rpbmcg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBmaWVsZCBub3RlczwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT00I3R5bGVycy1yZXF1ZXN0LWEtaG9tZXRvd24tc2FmYXJpPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAzLTMwPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy90eWxlci1yZXF1ZXN0LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UeWxlciYjeDI3O3MgUmVxdWVzdDogQSBIb21lVG93biBTYWZhcmkg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjYmlydGhkYXktd2Vla2VuZC13aXRoLXRoZS10aWdlcnM8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDMtMDg8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2JpcnRoZGF5LXdlZWtlbmQuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkJpcnRoZGF5IFdlZWtlbmQgd2l0aCB0aGUgVGlnZXJzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTQjbWFuYXRlZS1zcHJpbmdzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE4PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9tYW5hdGVlLXNwcmluZ3MuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPk1hbmF0ZWUgU3ByaW5ncyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSN3b3JsZC1vZi10aGUtaW5zZWN0PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE3PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy93b3JsZC1pbnNlY3QuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPldvcmxkIE9mIFRoZSBJbnNlY3Qg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTUjd29sZi13b29kczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wMi0xNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvd29sZi13b29kcy5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+V29sZiBXb29kcyDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSNhZnJpY2E8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDItMTU8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2FmcmljYS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+QWZyaWNhIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I3RoZS1oaXN0b3JpYy1yZXB0aWxlLWhvdXNlPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTE0PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yZXB0aWxlLWhvdXNlLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5UaGUgSGlzdG9yaWMgUmVwdGlsZSBIb3VzZSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENpbmNpbm5hdGkgWm9vICZhbXA7IEJvdGFuaWNhbCBHYXJkZW48L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NSNyb28tdmFsbGV5PC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTEzPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9yb28tdmFsbGV5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Sb28gVmFsbGV5IOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I2VhZ2xlLWV5cmllPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTEyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9lYWdsZS1leXJpZS5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+RWFnbGUgRXlyaWUg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTUjd2luZ3Mtb2YtdGhlLXdvcmxkPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI2LTAyLTExPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy93aW5ncy13b3JsZC5qcGc8L2ltYWdlOmxvYz48aW1hZ2U6dGl0bGU+V2luZ3MgT2YgVGhlIFdvcmxkIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT01I2ZpcnN0LXdpbGQtYWR2ZW50dXJlLW9mLTIwMjY8L2xvYz4KICAgIDxsYXN0bW9kPjIwMjYtMDItMTA8L2xhc3Rtb2Q+CiAgICA8Y2hhbmdlZnJlcT5tb250aGx5PC9jaGFuZ2VmcmVxPjxwcmlvcml0eT4wLjc8L3ByaW9yaXR5PgogICAgPGltYWdlOmltYWdlPjxpbWFnZTpsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL2ZlYjEwLXF1ZWVuLWNpdHkuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPkZpcnN0IFdpbGQgQWR2ZW50dXJlIG9mIDIwMjYg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDaW5jaW5uYXRpIFpvbyAmYW1wOyBCb3RhbmljYWwgR2FyZGVuPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjdHdvLXdpbGQtZGF5czwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNi0wMi0xMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvZmViMTAtd2lsZC1kYXlzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5Ud28gV2lsZCBEYXlzIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjMjAyNS1hLXllYXItdGhhdC13YXMtd2lsZDwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMi0zMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMveWVhci1pbi1yZXZpZXcuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPjIwMjU6IEEgWWVhciBUaGF0IFdhcyBXaWxkIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgWWVhciBpbiBSZXZpZXc8L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNtZXJyeS1jaHJpc3RtYXMtZnJvbS10aGUtc2FmYXJpLWZhbWlseTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMi0xMDwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvY2hyaXN0bWFzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5NZXJyeSBDaHJpc3RtYXMgZnJvbSB0aGUgU2FmYXJpIEZhbWlseSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIFNlYXNvbiYjeDI3O3MgR3JlZXRpbmdzPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjYS1sYXN0LXdhcm0tZGF5LWluLWNvbHVtYnVzPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTE1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9sYXN0LXdhcm0tZGF5LmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5BIExhc3QgV2FybSBEYXkgaW4gQ29sdW1idXMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNuZXctc3BlY2llcy10aGUtc29jb3Jyby1kb3ZlPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTE1PC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9zb2NvcnJvLWRvdmUuanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPk5ldyBTcGVjaWVzOiBUaGUgU29jb3JybyBEb3ZlIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ29sdW1idXMgWm9vICZhbXA7IEFxdWFyaXVtPC9pbWFnZTp0aXRsZT48L2ltYWdlOmltYWdlPgogIDwvdXJsPgogIDx1cmw+CiAgICA8bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tLz9wYWdlPTYjbmV3LWJpcmRzLWFuZC1jdXRlLW5ld2NvbWVyczwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMS0wNjwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvbmV3LWJpcmRzLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5OZXcgQmlyZHMgJmFtcDsgQ3V0ZSBOZXdjb21lcnMg4oCUIFNhZmFyaSBMb3VpZSBwaG90byB0b3VyLCBDb2x1bWJ1cyBab28gJmFtcDsgQXF1YXJpdW08L2ltYWdlOnRpdGxlPjwvaW1hZ2U6aW1hZ2U+CiAgPC91cmw+CiAgPHVybD4KICAgIDxsb2M+aHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vP3BhZ2U9NiNjYXQtY2FueW9uPC9sb2M+CiAgICA8bGFzdG1vZD4yMDI1LTExLTAyPC9sYXN0bW9kPgogICAgPGNoYW5nZWZyZXE+bW9udGhseTwvY2hhbmdlZnJlcT48cHJpb3JpdHk+MC43PC9wcmlvcml0eT4KICAgIDxpbWFnZTppbWFnZT48aW1hZ2U6bG9jPmh0dHBzOi8vZG1vbmV5b2guZ2l0aHViLmlvL1NhZmFyaUxvdWllRG90Q29tL2Fzc2V0cy9jYXQtY2FueW9uLmpwZzwvaW1hZ2U6bG9jPjxpbWFnZTp0aXRsZT5DYXQgQ2FueW9uIOKAlCBTYWZhcmkgTG91aWUgcGhvdG8gdG91ciwgQ2luY2lubmF0aSBab28gJmFtcDsgQm90YW5pY2FsIEdhcmRlbjwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KICA8dXJsPgogICAgPGxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS8/cGFnZT02I3RoZS1oZXJwZXRhcml1bTwvbG9jPgogICAgPGxhc3Rtb2Q+MjAyNS0xMC0yODwvbGFzdG1vZD4KICAgIDxjaGFuZ2VmcmVxPm1vbnRobHk8L2NoYW5nZWZyZXE+PHByaW9yaXR5PjAuNzwvcHJpb3JpdHk+CiAgICA8aW1hZ2U6aW1hZ2U+PGltYWdlOmxvYz5odHRwczovL2Rtb25leW9oLmdpdGh1Yi5pby9TYWZhcmlMb3VpZURvdENvbS9hc3NldHMvaGVycGV0YXJpdW0uanBnPC9pbWFnZTpsb2M+PGltYWdlOnRpdGxlPlRoZSBIZXJwZXRhcml1bSDigJQgU2FmYXJpIExvdWllIHBob3RvIHRvdXIsIENvbHVtYnVzIFpvbyAmYW1wOyBBcXVhcml1bTwvaW1hZ2U6dGl0bGU+PC9pbWFnZTppbWFnZT4KICA8L3VybD4KPC91cmxzZXQ+Cg==">assets/sitemap.xml</a> (also linked from <a href="data:text/plain;base64,VXNlci1hZ2VudDogKgpBbGxvdzogLwoKU2l0ZW1hcDogaHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vc2l0ZW1hcC54bWwKU2l0ZW1hcDogaHR0cHM6Ly9kbW9uZXlvaC5naXRodWIuaW8vU2FmYXJpTG91aWVEb3RDb20vYXNzZXRzL3NpdGVtYXAueG1sCg==">robots.txt</a>). The one step only the site owner can do is claim the site in Google Search Console, because it needs the owner's Google account:</p>
     <ol style="margin:8px 0;padding-left:20px">
       <li>When this page is pushed to the GitHub repo, also copy <strong>sitemap.xml</strong> and <strong>robots.txt</strong> from the assets folder into the repo root, so they live at dmoneyoh.github.io/SafariLouieDotCom/sitemap.xml and /robots.txt.</li>
       <li>Open <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a>, add the property <strong>https://dmoneyoh.github.io/SafariLouieDotCom/</strong>, and verify ownership with the HTML tag method (paste the code they give you into this page's &lt;head&gt; on the next update).</li>
@@ -2231,17 +2251,41 @@
 (function(){
   var PER_PAGE = 8;
   var tours = Array.prototype.slice.call(document.querySelectorAll('#toursGrid .tour'));
-  var totalPages = Math.max(1, Math.ceil(tours.length / PER_PAGE));
   var current = 1;
+  var activeFilter = 'all';
+  var ZOO_LABELS = {
+    all: 'all tours',
+    columbus: 'Columbus Zoo & Aquarium',
+    cincinnati: 'Cincinnati Zoo & Botanical Garden',
+    louisville: 'Louisville Zoo',
+    newport: 'Newport Aquarium',
+    disney: "Disney's Animal Kingdom",
+    more: 'Field notes & more'
+  };
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
   var status = document.getElementById('pagerStatus');
   var numsWrap = document.getElementById('pageNums');
   var topEl = document.getElementById('toursTop');
+  var filterStatus = document.getElementById('filterStatus');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+  var toursView = document.getElementById('toursView');
+  var aboutView = document.getElementById('aboutView');
+  var navTours = document.getElementById('navTours');
+  var navAbout = document.getElementById('navAbout');
+  var baseTitle = document.title;
 
+  function filteredTours(){
+    if(activeFilter === 'all') return tours.slice();
+    return tours.filter(function(el){ return el.getAttribute('data-zoo') === activeFilter; });
+  }
+  function totalPages(){
+    return Math.max(1, Math.ceil(filteredTours().length / PER_PAGE));
+  }
   function renderNums(){
     numsWrap.innerHTML = '';
-    for(var i=1;i<=totalPages;i++){
+    var pages = totalPages();
+    for(var i=1;i<=pages;i++){
       (function(n){
         var b = document.createElement('button');
         b.type = 'button';
@@ -2255,28 +2299,49 @@
     }
   }
   function showPage(){
+    var list = filteredTours();
+    var pages = totalPages();
+    if(current > pages) current = pages;
     var start = (current-1)*PER_PAGE;
     var end = start + PER_PAGE;
-    tours.forEach(function(el, idx){
-      el.hidden = !(idx >= start && idx < end);
-    });
-    status.textContent = 'Page ' + current + ' of ' + totalPages;
+    var visible = {};
+    list.slice(start, end).forEach(function(el){ visible[el.id] = true; });
+    tours.forEach(function(el){ el.hidden = !visible[el.id]; });
+    status.textContent = 'Page ' + current + ' of ' + pages;
     prevBtn.disabled = current <= 1;
-    nextBtn.disabled = current >= totalPages;
+    nextBtn.disabled = current >= pages;
+    if(filterStatus){
+      if(activeFilter === 'all'){
+        filterStatus.innerHTML = 'Showing <strong>all ' + list.length + ' tours</strong>, newest first.';
+      } else {
+        filterStatus.innerHTML = 'Showing <strong>' + list.length + (list.length === 1 ? ' tour' : ' tours') + ' from ' + ZOO_LABELS[activeFilter] + '</strong>, newest first.';
+      }
+    }
     renderNums();
   }
   function goTo(n, scroll){
-    current = Math.min(totalPages, Math.max(1, n));
+    current = Math.min(totalPages(), Math.max(1, n));
     showPage();
     syncUrl();
     if(scroll && topEl){
       topEl.scrollIntoView({behavior:'smooth', block:'start'});
     }
   }
+  function setFilter(name, keepPage){
+    if(!ZOO_LABELS.hasOwnProperty(name)) name = 'all';
+    activeFilter = name;
+    chips.forEach(function(chip){
+      chip.setAttribute('aria-pressed', chip.getAttribute('data-filter') === name ? 'true' : 'false');
+    });
+    if(!keepPage) current = 1;
+    showPage();
+    syncUrl();
+  }
   function syncUrl(){
     try{
       var url = new URL(window.location.href);
       if(current > 1){ url.searchParams.set('page', String(current)); } else { url.searchParams.delete('page'); }
+      if(activeFilter !== 'all'){ url.searchParams.set('zoo', activeFilter); } else { url.searchParams.delete('zoo'); }
       window.history.replaceState(null, '', url.toString());
     }catch(e){}
   }
@@ -2286,31 +2351,67 @@
   }
   prevBtn.addEventListener('click', function(){ goTo(current-1, true); });
   nextBtn.addEventListener('click', function(){ goTo(current+1, true); });
-  document.querySelectorAll('[data-tour-link]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var idx = tourIndexById(a.getAttribute('data-tour-link'));
-      if(idx < 0) return;
-      e.preventDefault();
-      goTo(Math.floor(idx / PER_PAGE) + 1, false);
-      var card = tours[idx];
-      if(card){ setTimeout(function(){ card.scrollIntoView({behavior:'smooth', block:'start'}); }, 40); }
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      setFilter(chip.getAttribute('data-filter'), false);
+      var filterBox = chip.closest('.zoo-filter');
+      if(filterBox){ filterBox.scrollIntoView({behavior:'smooth', block:'start'}); }
     });
   });
-  // Deep links: ?page=N or #tour-slug — used by the sitemap and the tour index above,
-  // so a search result can land on the exact tour, not just page one.
-  var startPage = 1;
-  try{
-    var q = parseInt(new URLSearchParams(window.location.search).get('page'), 10);
-    if(q >= 1 && q <= totalPages) startPage = q;
-  }catch(e){}
-  var hashIdx = tourIndexById((window.location.hash || '').replace('#',''));
-  if(hashIdx >= 0) startPage = Math.floor(hashIdx / PER_PAGE) + 1;
-  current = startPage;
-  showPage();
-  if(hashIdx >= 0){
-    var target = tours[hashIdx];
-    if(target){ setTimeout(function(){ target.scrollIntoView({block:'start'}); }, 80); }
+
+  // Separate About page view: #about shows About on its own, everything
+  // else shows the photo tours.
+  function showAbout(){
+    if(toursView) toursView.hidden = true;
+    if(aboutView) aboutView.hidden = false;
+    if(navAbout) navAbout.setAttribute('aria-current','page');
+    if(navTours) navTours.removeAttribute('aria-current');
+    document.title = 'About Louie | Safari Louie';
+    if(topEl){ topEl.scrollIntoView({block:'start'}); }
   }
+  function showTours(){
+    if(aboutView) aboutView.hidden = true;
+    if(toursView) toursView.hidden = false;
+    if(navTours) navTours.setAttribute('aria-current','page');
+    if(navAbout) navAbout.removeAttribute('aria-current');
+    document.title = baseTitle;
+  }
+  function route(scrollToTour){
+    var hash = (window.location.hash || '').replace('#','');
+    if(hash === 'about'){ showAbout(); return; }
+    showTours();
+    var idx = tourIndexById(hash);
+    if(idx >= 0){
+      // Land on the exact tour: switch the filter to that tour's zoo so
+      // the tour is in the filtered list, then page to it.
+      var zoo = tours[idx].getAttribute('data-zoo') || 'all';
+      setFilter(zoo, true);
+      var list = filteredTours();
+      var pos = list.indexOf(tours[idx]);
+      current = Math.floor(pos / PER_PAGE) + 1;
+      showPage();
+      syncUrl();
+      if(scrollToTour){
+        var target = tours[idx];
+        setTimeout(function(){ target.scrollIntoView({block:'start'}); }, 80);
+      }
+    }
+  }
+  window.addEventListener('hashchange', function(){ route(true); });
+
+  // Deep links: ?zoo=key, ?page=N or #tour-slug — used by the sitemap,
+  // so a search result can land on the exact tour, not just page one.
+  var params = new URLSearchParams(window.location.search);
+  var startFilter = params.get('zoo') || 'all';
+  var hashIdx = tourIndexById((window.location.hash || '').replace('#',''));
+  if(hashIdx < 0){
+    setFilter(startFilter, true);
+    var q = parseInt(params.get('page'), 10);
+    if(q >= 1 && q <= totalPages()) current = q;
+    showPage();
+    syncUrl();
+  }
+  route(hashIdx >= 0);
 })();
 </script>
 <script>
@@ -2383,6 +2484,10 @@
   article.tour[hidden]{display:block !important}
   .tour-full[hidden]{display:block}
   .pager{display:none}
+  .zoo-filter{display:none}
+  .view-nav{display:none}
+  #aboutView[hidden]{display:block !important}
+  .about-view .back-to-tours{display:none}
 </style></noscript>
 </body>
 </html>
