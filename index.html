@@ -1156,6 +1156,7 @@
 
   html{overflow-anchor:none}
   #toursTop{scroll-margin-top:16px}
+  #about{scroll-margin-top:16px}
 
   main{margin:0;padding:0}
   .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
@@ -2440,7 +2441,7 @@
 </div><!-- /#toursView -->
 
 
-<section class="about-view" id="aboutView" aria-labelledby="aboutTitle" hidden>
+<section class="about-view" id="about" aria-labelledby="aboutTitle" hidden>
   <h2 id="aboutTitle">About Safari Louie</h2>
   <p class="about-lede">Louie Eigensee — the man behind the camera</p>
   <p>Safari Louie is Louie Eigensee's home for the animal photo tours he has been posting since 2020. Louie has seen and photographed 1,062 species — mammals, birds, reptiles and amphibians — and every tour here is told in his photos and his words: the habitats, the animals, and what makes each one worth the walk. Regular stops include Asia Quest, Heart of Africa and Congo Expedition at the Columbus Zoo; Elephant Trek, Jungle Trails and Hippo Cove at the Cincinnati Zoo; Glacier Run and the HerpAquarium at the Louisville Zoo; the whole Newport Aquarium in Kentucky; and Kilimanjaro Safaris at Disney's Animal Kingdom in Florida.</p>
@@ -2506,7 +2507,7 @@
   var filterStatus = document.getElementById('filterStatus');
   var zooSelect = document.getElementById('zooSelect');
   var toursView = document.getElementById('toursView');
-  var aboutView = document.getElementById('aboutView');
+  var aboutView = document.getElementById('about') || document.getElementById('aboutView');
   var navTours = document.getElementById('navTours');
   var navAbout = document.getElementById('navAbout');
   var baseTitle = document.title;
@@ -2601,7 +2602,16 @@
     if(navAbout) navAbout.setAttribute('aria-current','page');
     if(navTours) navTours.removeAttribute('aria-current');
     document.title = 'About Louie | Safari Louie';
-    if(topEl){ topEl.scrollIntoView({block:'start'}); }
+    // Scroll to the top of the About section itself (#about), not to
+    // #toursTop — that anchor sits with the tours view and landed
+    // mid-section once the hero/utility bars hid. Defer a frame so the
+    // scroll happens after those bars hide and the layout settles.
+    var scrollToAbout = function(){
+      if(aboutView){ aboutView.scrollIntoView({block:'start'}); }
+      else { window.scrollTo(0, 0); }
+    };
+    scrollToAbout();
+    if(window.requestAnimationFrame){ window.requestAnimationFrame(scrollToAbout); }
   }
   function showTours(){
     if(aboutView) aboutView.hidden = true;
@@ -2742,7 +2752,7 @@
   article.tour[hidden]{display:block !important}
   .pager{display:none}
   .zoo-filter{display:none}
-  #aboutView[hidden]{display:block !important}
+  #about[hidden],#aboutView[hidden]{display:block !important}
   .about-view .back-to-tours{display:none}
 </style></noscript>
 </body>
