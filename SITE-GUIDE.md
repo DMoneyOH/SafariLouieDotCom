@@ -69,8 +69,9 @@ Copy a tour page that already has a `<p class="tour-summary">` (the current form
 - `data-zoo` is one of `columbus`, `cincinnati`, `louisville`, `newport`, `disney` or `more`.
 - The newest tour card goes first.
 - The hero slides at the top use the `home-hero-*` photos.
-- When you add a tour, update the home page's tour lists and `sitemap.xml` the same way the
-  existing tours appear there.
+- When you add a tour, also add it in three more places, copying the shape of the entries already
+  there: the `blogPost` list and the `ItemList` (raise `numberOfItems` by one) in the JSON-LD near
+  the top of `index.html`, and a `<url>` line for `tours/<tour-slug>/` in `sitemap.xml`.
 
 ## Colours and fonts
 
