@@ -2,6 +2,31 @@
 
 Newest entry first. Add an entry for every change to the site: the date, what changed, and why.
 
+## 2026-11-27: Text cleanup: photo credit, build notes, sitemap
+
+**What changed.**
+
+- The home-page gorilla slide said "Photo by Louie". The photo's own details credit Columbus Zoo
+  and Aquarium, so the credit now says "Photo: Columbus Zoo and Aquarium".
+- Removed build notes that showed to visitors: "Clean original: no title or watermark on the
+  photo itself." under the Lewis hero photo, "Alternate hero, one tap away, the landing view is
+  always Lewis." under the red panda and gorilla slides, and "No title across the bottom, no
+  watermark. Just the tiger." in the Animal of the Month text.
+- `sitemap.xml` no longer lists the seven `?page=` addresses. They show the same page as the
+  home page. It now has the home page and the 64 tour pages.
+- Removed the old copy of the sitemap hidden in the home page's `<head>`. Search engines ignore
+  it and it was out of date.
+
+Only wording and the sitemap changed. The layout and design did not.
+
+**Why.** Visitors were reading notes meant for the builder, one photo credit was wrong, and the
+sitemap pointed search engines at duplicate addresses.
+
+**What it means for future edits.** `SITE-GUIDE.md` has new rules under "Voice, credits, captions
+and the sitemap". New posts are written in the first person ("I", not "Louie"), following the voice
+of Louie's own Facebook posts. Older pages that still say "Louie posted" are not changed in this
+entry and will be converted separately.
+
 ## 2026-11-27: Share previews now show a photo
 
 **What changed.**

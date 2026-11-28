@@ -126,6 +126,18 @@ Rules for the image address:
 The home page uses `assets/images/home-hero-lewis.jpg`, the Lewis photo that opens the hero, for
 its `og:image` and `twitter:image`. Keep those pointing at a real file in `assets/images/`.
 
+## Voice, credits, captions and the sitemap
+
+- Write every post in the first person: "I", never "Louie". Follow the voice of Louie's own
+  Facebook posts, keep his wording, and tidy only. Do not rewrite it. The one place his name stays
+  is the credit line "Photo by Louie".
+- A credit names the real photographer or owner of the photo. Only Louie's own photos say
+  "Photo by Louie". A zoo's photo says, for example, "Photo: Columbus Zoo and Aquarium".
+- Captions and credits are visitor copy. Never put design or build notes in them, such as "clean
+  original", "no watermark" or "alternate hero".
+- `sitemap.xml` lists only real pages: the home page and one `<url>` per tour page. Never add
+  `?page=` URLs or other filter or paging addresses.
+
 ## Colours and fonts
 
 They live in `assets/theme.css` (the home page carries its own copy inline; keep the two in step).
