@@ -48,8 +48,8 @@ Copy a tour page that already has a `<p class="tour-summary">` (the current form
 `tours/kilimanjaro-safaris/index.html`) and change its content. Keep this structure:
 
 1. `<head>`: title `<Tour title> | Safari Louie`, meta description, canonical and `og:` tags with
-   the tour's own URL, the `Article` JSON-LD, the Google Fonts link, and
-   `<link rel="stylesheet" href="../../assets/theme.css" />`.
+   the tour's own URL, the share-preview image tags (see "Share previews" below), the `Article`
+   JSON-LD, the Google Fonts link, and `<link rel="stylesheet" href="../../assets/theme.css" />`.
 2. `<header class="top">`: text logo plus Photo Tours, About Louie and Facebook links.
 3. `<main>`, in this order: `<p class="date">` with a `<time>`, `<h1>` title, `<p class="where">`
    with the zoo and tour number, `<p class="tour-summary">` (a short first-person summary), the
@@ -72,6 +72,58 @@ Copy a tour page that already has a `<p class="tour-summary">` (the current form
 - When you add a tour, also add it in three more places, copying the shape of the entries already
   there: the `blogPost` list and the `ItemList` (raise `numberOfItems` by one) in the JSON-LD near
   the top of `index.html`, and a `<url>` line for `tours/<tour-slug>/` in `sitemap.xml`.
+- The `"image"` in each `blogPost` entry is the same full URL as that tour page's `og:image`.
+
+## Share previews (Facebook and other sites)
+
+When someone shares a page on Facebook, Facebook reads tags in the page's `<head>` to build the
+preview card: the title, the description and a photo. Without the photo tags the card has no
+picture.
+
+**Every tour page carries each of these tags exactly once**, in the `<head>`, next to the other
+`og:` tags:
+
+| Tag | What goes in it |
+| --- | --- |
+| `og:type` | `article` |
+| `og:title` | the same text as the page's `<title>` |
+| `og:description` | the same text as the page's meta description |
+| `og:url` | the tour's full address, the same as the canonical link |
+| `og:image` | the full address of the tour's main photo (the photo in `<figure class="photo">`) |
+| `og:image:width`, `og:image:height` | that photo's real size in pixels |
+| `og:image:alt` | the same text as that photo's `alt` |
+| `twitter:card` | `summary_large_image` |
+| `twitter:image` | the same address as `og:image` |
+
+Copy this block and change the parts in angle brackets:
+
+```html
+<meta property="og:type" content="article" />
+<meta property="og:title" content="<Tour title> | Safari Louie" />
+<meta property="og:description" content="<the meta description>" />
+<meta property="og:url" content="https://dmoneyoh.github.io/SafariLouieDotCom/tours/<tour-slug>/" />
+<meta property="og:image" content="https://dmoneyoh.github.io/SafariLouieDotCom/assets/images/<tour-slug>.jpg" />
+<meta property="og:image:width" content="<width in pixels>" />
+<meta property="og:image:height" content="<height in pixels>" />
+<meta property="og:image:alt" content="<the main photo's alt text>" />
+<meta property="og:site_name" content="Safari Louie" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://dmoneyoh.github.io/SafariLouieDotCom/assets/images/<tour-slug>.jpg" />
+```
+
+Rules for the image address:
+
+- Write the **full** address starting `https://`, never `../../assets/...`. Share previews
+  need the full address.
+- Match the file name exactly, including `.jpg` or `.webp` and lowercase letters. A wrong letter
+  means no picture on Facebook.
+- Facebook needs a photo at least 200 pixels wide **and** 200 pixels tall, and works best at
+  1200 x 630 or larger. If the tour's only photo is smaller than 200 x 200, save an enlarged copy
+  named `<tour-slug>-share.jpg`, use it in `og:image`, `twitter:image` and the home page's
+  `blogPost` `"image"`, and leave the photo on the page as it is.
+
+The home page uses `assets/images/home-hero-lewis.jpg`, the Lewis photo that opens the hero, for
+its `og:image` and `twitter:image`. Keep those pointing at a real file in `assets/images/`.
 
 ## Colours and fonts
 
