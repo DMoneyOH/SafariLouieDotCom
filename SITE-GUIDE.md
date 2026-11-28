@@ -95,7 +95,8 @@ picture.
 | `twitter:card` | `summary_large_image` |
 | `twitter:image` | the same address as `og:image` |
 
-Copy this block and change the parts in angle brackets:
+Copy this block and change the parts in angle brackets. Keep the page's other tags, such as
+`article:published_time` and `article:author`, where they are:
 
 ```html
 <meta property="og:type" content="article" />
