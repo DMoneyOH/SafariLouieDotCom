@@ -37,14 +37,16 @@
   .date{font-family:"Caveat",cursive;font-size:1.2rem;color:var(--rust);line-height:1.1;margin:0}
   h1{font-family:"Bitter",Georgia,serif;font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.2;margin:0 0 6px;color:var(--ink)}
   .where{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;font-weight:600;font-family:"Public Sans",system-ui,sans-serif}
-  figure.photo{background:#f5f0e1;padding:7px 7px 28px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:12px 0 4px}
-  figure.photo img{width:100%;aspect-ratio:16/9;object-fit:cover}
-  figure.photo figcaption{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-family:"Caveat",cursive;font-size:1.05rem;color:#14213d;line-height:1;padding:0 8px}
+  /* Photos are shown whole, in their own shape (tall or wide), never cropped.
+     The caption sits below the photo, never over it. */
+  figure.photo{background:#f5f0e1;padding:7px 7px 8px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:12px auto 4px;width:fit-content;max-width:100%}
+  figure.photo img{width:auto;max-width:100%;height:auto;max-height:80vh;object-fit:contain;display:block;margin:0 auto}
+  figure.photo figcaption{text-align:center;font-family:"Caveat",cursive;font-size:1.05rem;color:#14213d;line-height:1;padding:6px 8px 0}
   figure.photo::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-2deg);width:80px;height:18px;background:var(--tape);z-index:2}
   .tilt-l{transform:rotate(-.8deg)} .tilt-r{transform:rotate(.8deg)}
   .credit{font-size:.72rem;color:var(--ink-soft);font-style:italic;margin:2px 0 8px !important}
   .tour-body p{margin:0 0 14px;font-size:1.06rem}
-  .tour-body figure{margin:0 0 18px}
+  .tour-body figure{margin:0 auto 18px}
   .tour-body figure img{max-width:100%;height:auto}
   .on-fb{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.85rem;color:var(--ink-soft);font-family:"Public Sans",system-ui,sans-serif}
   .on-fb a{font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold)}

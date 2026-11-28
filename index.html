@@ -1526,7 +1526,7 @@
   .polaroid{background:#f7f2df;padding:.65rem .65rem 0;position:relative;flex:none}
   .polaroid .tape{position:absolute;top:-.55rem;left:50%;transform:translateX(-50%) rotate(-2.5deg);width:6.2rem;height:1.35rem;background:var(--tape);border-radius:2px;z-index:2;box-shadow:0 1px 3px rgba(0,0,0,.18)}
   article.tour:nth-child(2n) .polaroid .tape{transform:translateX(-50%) rotate(2deg)}
-  .polaroid img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 18%}
+  .polaroid img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 50%}
   .polaroid .hand{font-size:1.45rem;font-weight:700;color:#22345c;text-align:center;padding:.35rem .25rem .55rem;line-height:1.15}
   .tour-body{padding:1.05rem 1.2rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
   .tour-meta{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
@@ -1550,9 +1550,9 @@
   article.tour h2{font-size:clamp(1.3rem,3.5vw,1.65rem);line-height:1.2;margin:2px 0 2px}
   .where{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;font-weight:600}
   article.tour p{margin:0 0 10px}
-  figure.photo{background:#f5f0e1;padding:7px 7px 28px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:12px 0 4px}
-  figure.photo img{width:100%;aspect-ratio:16/9;object-fit:cover}
-  figure.photo figcaption{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-family:"Caveat",cursive;font-size:1.05rem;color:#14213d;line-height:1;padding:0 8px}
+  figure.photo{background:#f5f0e1;padding:7px 7px 8px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:12px auto 4px;width:fit-content;max-width:100%}
+  figure.photo img{width:auto;max-width:100%;height:auto;max-height:80vh;object-fit:contain;display:block;margin:0 auto}
+  figure.photo figcaption{text-align:center;font-family:"Caveat",cursive;font-size:1.05rem;color:#14213d;line-height:1;padding:6px 8px 0}
   figure.photo::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-2deg);width:80px;height:18px;background:var(--tape);z-index:2}
   .tilt-l{transform:rotate(-.8deg)} .tilt-r{transform:rotate(.8deg)}
   .credit{font-size:.72rem;color:var(--ink-soft);font-style:italic;margin:2px 0 8px !important}
@@ -2375,7 +2375,7 @@
     <a class="tour-link" href="tours/earth-day-with-lewis-the-tiger/">
     <div class="polaroid">
       <span class="tape" aria-hidden="true"></span>
-      <img src="assets/images/earth-day-with-lewis-the-tiger.jpg" alt="The cover of Louie's Earth Day reel: Lewis, an Amur tiger, at Cincinnati Zoo" loading="lazy" />
+      <img src="assets/images/earth-day-with-lewis-the-tiger.jpg" alt="The cover of Louie's Earth Day reel: Lewis, an Amur tiger, at Cincinnati Zoo" loading="lazy" style="object-position:50% 75%" />
       <div class="hand">Lewis, for Earth Day</div>
     </div>
     <div class="tour-body">
