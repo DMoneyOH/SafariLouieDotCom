@@ -37,6 +37,9 @@
   .date{font-family:"Caveat",cursive;font-size:1.2rem;color:var(--rust);line-height:1.1;margin:0}
   h1{font-family:"Bitter",Georgia,serif;font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.2;margin:0 0 6px;color:var(--ink)}
   .where{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;font-weight:600;font-family:"Public Sans",system-ui,sans-serif}
+  /* Lead paragraph under the title: set apart from the body text. Pages must not restyle it inline. */
+  .tour-summary{font-family:"Bitter",Georgia,serif;font-size:1.2rem;line-height:1.55;font-weight:500;border-left:3px solid var(--gold);padding-left:14px;margin:14px 0 20px}
+  @media(max-width:480px){.tour-summary{font-size:1.08rem}}
   /* Photos are shown whole, in their own shape (tall or wide), never cropped.
      The caption sits below the photo, never over it. */
   figure.photo{background:#f5f0e1;padding:7px 7px 8px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;margin:12px auto 4px;width:fit-content;max-width:100%}

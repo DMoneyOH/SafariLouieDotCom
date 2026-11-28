@@ -2,6 +2,23 @@
 
 Newest entry first. Add an entry for every change to the site: the date, what changed, and why.
 
+## 2026-11-28: Tour summary styled as a lead paragraph
+
+**What changed.**
+
+- **Tour pages:** the `tour-summary` paragraph under each tour's title now reads as a lead. It is
+  set in Bitter at 1.2rem, a little heavier than the body text, with a gold line down its left
+  edge. Before, it looked the same as the body text (Lora, 15.5px). On narrow phones (480px wide
+  or less) it drops to 1.08rem so it does not crowd the screen.
+- Changed in `assets/theme.css` only. No page text changed, and the home page does not use this
+  style.
+
+**Why.** The summary is the hook for each tour, so it should stand apart from the post text.
+
+**What it means for future edits.** `SITE-GUIDE.md` has a new "The tour summary" part: one to
+three first-person sentences, and the first body paragraph must not repeat them. Do not restyle
+the summary inline in a page.
+
 ## 2026-11-27: Photo framing: Louie's photos shown whole, captions below the photo
 
 **What changed.**

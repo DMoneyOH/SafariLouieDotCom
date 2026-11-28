@@ -80,6 +80,18 @@ Copy a tour page that already has a `<p class="tour-summary">` (the current form
    `<p class="back">` linking back to all tours.
 6. The same `<footer>` as every other tour page.
 
+### The tour summary
+
+Each tour opens with a `<p class="tour-summary">` lead, directly under the `where` line.
+
+- Write one to three first-person sentences that set up the walk: where Louie is and what he
+  sees. It is the hook, so keep it short.
+- **The first body paragraph must not repeat or restate it.** The body picks up where the summary
+  stops. Avoid the Glacier Run pattern, where the summary and the first body paragraph both open
+  "Glacier Run at Louisville Zoo…".
+- The style lives in `assets/theme.css` (Bitter, larger, with a gold line on the left). Never
+  restyle it inline in a page. To change how every summary looks, change that one rule.
+
 ## Home page patterns
 
 - Each tour has one card: `<article id="<tour-slug>" class="tour" data-zoo="...">` holding
