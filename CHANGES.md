@@ -2,6 +2,35 @@
 
 Newest entry first. Add an entry for every change to the site: the date, what changed, and why.
 
+## 2026-11-27: Photo framing: Louie's photos shown whole, captions below the photo
+
+**What changed.**
+
+- **Tour pages:** each photo now shows whole, in its own shape. Before, every photo was cut to a
+  wide 16:9 frame, so a tall photo such as Lewis the tiger on the Earth Day page showed only his
+  forehead and eyes. Wide photos still fill the page width. Tall photos are limited to 80% of the
+  window height, so they never run off the screen.
+- **Captions:** the caption now sits below the photo. Before, it sat in a fixed strip, so on a
+  phone a long caption (for example on the Akron Zoo page) wrapped up over the photo.
+- **Home cards:** the photo frame is now 16:9, centred, instead of 4:3 cut from near the top. Most
+  photos are 16:9, so the sides are no longer cut off. The old frame turned Louie's labels into
+  "non Hippopotamus", "r Tiger" and "ted Gibbon". The Earth Day card has its own setting so
+  Lewis's face shows in the frame.
+- Small photos now show at their real size instead of stretched. The Africa and Wolf Woods photos
+  are 240 pixels wide, so they look small on their pages. The fix for that is a bigger photo.
+- Changed in `assets/theme.css` and in the home page's inline copy of the same rules. A second
+  photo inside the post text is now centred like the first.
+
+Only photo and caption framing changed. Colours, fonts, wording and the tape strip and tilt are
+the same.
+
+**Why.** Louie burns a species label and his tiger mark into his photos, and the old crops cut
+them off.
+
+**What it means for future edits.** `SITE-GUIDE.md` has a new "How photos are shown" part under
+"Photos". New posts need no extra markup: use `<figure class="photo">` and a `polaroid` card as
+before. A tall photo on a home card needs an `object-position` on its `<img>`.
+
 ## 2026-11-27: Text cleanup: photo credit, build notes, sitemap
 
 **What changed.**

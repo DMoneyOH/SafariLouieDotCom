@@ -42,6 +42,25 @@ How to reference a photo depends on which page it is on:
 The tour page needs `../../` because it sits two folders down, the same way it links
 `../../assets/theme.css`.
 
+### How photos are shown
+
+Louie's photos are the heart of the site, and they are shown whole. Many of them have his species
+label burned in at the bottom left and his Safari Louie tiger mark at the bottom right, so a crop
+that cuts a photo's edge can cut his name off it.
+
+- **Never crop a photo so that his species label or tiger mark is cut off.** Do not add
+  `object-fit: cover`, a fixed `aspect-ratio` or a fixed height to a tour-page photo.
+- **Tour-page photos keep their own shape**, tall or wide. `figure.photo` in `assets/theme.css`
+  already does this. Use `<figure class="photo">` and do not write a size on the `<img>`.
+- **Home cards use a 16:9 frame, centred.** `.polaroid img` already does this. If a photo is
+  tall, add an `object-position` to that card's `<img>` so the animal's face shows, for example
+  `style="object-position:50% 75%"`. The second number is how far down the photo the frame sits.
+  The Earth Day card (`earth-day-with-lewis-the-tiger`) is the one card that needs it today.
+- **Captions sit below the photo, never over it.** Put the text in the `<figcaption>` and keep
+  it short.
+- **Use the full-size photo** from Louie's phone or his Facebook post, not a small thumbnail.
+  A small photo shows at its real size, so a 240-pixel-wide photo looks small on the page.
+
 ## Tour page template
 
 Copy a tour page that already has a `<p class="tour-summary">` (the current format, for example
