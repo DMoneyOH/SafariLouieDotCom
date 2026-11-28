@@ -80,6 +80,29 @@ Copy a tour page that already has a `<p class="tour-summary">` (the current form
    `<p class="back">` linking back to all tours.
 6. The same `<footer>` as every other tour page.
 
+### The tour summary
+
+Every tour opens with a `<p class="tour-summary">` lead, directly under the `where` line. When an
+older tour without one is converted to the current format, add one.
+
+**Content format**
+
+- One to three sentences, first person ("I"), in the voice of the Facebook post.
+- Say where I am and what I saw: the zoo, the area, and the animals or moments worth the visit.
+  It is the hook, so keep it short.
+- **The first body paragraph must not repeat or restate it.** The body picks up where the summary
+  stops. Avoid the Glacier Run pattern, where the summary and the first body paragraph both open
+  "Glacier Run at Louisville Zoo…".
+- Plain text only: no links, photo credits or build notes.
+
+**Design format**
+
+- Bitter, 1.2rem (1.08rem on screens 480px wide or less), weight 500, line height 1.55, in the
+  cream text colour.
+- A 3px gold line (`var(--gold)`) on the left, 14px padding, 14px above and 20px below.
+- The style lives in one rule in `assets/theme.css`. Never restyle it inline in a page. To change
+  how every summary looks, change that one rule.
+
 ## Home page patterns
 
 - Each tour has one card: `<article id="<tour-slug>" class="tour" data-zoo="...">` holding
